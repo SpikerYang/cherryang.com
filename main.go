@@ -1,6 +1,7 @@
 package main
 
 import (
+	"cherryang.com/controllers"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -18,12 +19,13 @@ func loadHtmlTemplates(router *gin.Engine) {
 }
 
 func setStaticFilePath(router *gin.Engine) {
+	router.Static("/templates", "static/templates")
 	router.Static("/css", "static/css")
 	router.Static("/images", "static/images")
 }
 
 func registerHandler(router *gin.Engine) {
-	router.GET("/welcome", welcomeHandler)
+	router.GET("/", controllers.IndexHandler)
 }
 
 func welcomeHandler(c *gin.Context) {

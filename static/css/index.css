@@ -1,45 +1,3 @@
-.navigation {
-    display: flex;
-    justify-content: center;
-}
-.navigation a {
-    text-decoration: none;
-}
-.navigation ul {
-    list-style-type: none;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-right: 40px;
-}
-.navigation li {
-    display: inline;
-    text-align: center;
-    list-style-type: none;
-    padding-left: 15px;
-    padding-right: 15px;
-}
-.navigation .fab:hover {
-    color: dimgray;
-}
-.navigation .fab{
-    font-size:24px;
-    color:black;
-}
-.navigation .no-icon {
-    color:black;
-    font-family: Tahoma, sans-serif;
-    font-weight: lighter;
-}
-.navigation .no-icon .bilibili {
-    font-family: "Comic Sans MS", sans-serif;
-    font-weight: bold;
-}
-.navigation .no-icon:hover {
-    color: dimgray;
-}
 .index-container {
     display: flex;
     vertical-align: center;
@@ -71,5 +29,3 @@
     height: 600px;
     width: 1000px;
 }
-
-
