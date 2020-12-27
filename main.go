@@ -22,10 +22,18 @@ func setStaticFilePath(router *gin.Engine) {
 	router.Static("/templates", "static/templates")
 	router.Static("/css", "static/css")
 	router.Static("/images", "static/images")
+	router.Static("/js", "static/js")
 }
 
 func registerHandler(router *gin.Engine) {
-	router.GET("/", controllers.IndexHandler)
+	router.GET("/index", controllers.IndexHandler)
+	blogsRouteGroup := router.Group("/blogs")
+	{
+		blogsRouteGroup.GET("add", controllers.AddBlogHandler)
+		blogsRouteGroup.GET("view", controllers.ViewBlogHandler)
+		blogsRouteGroup.GET("edit", controllers.EditBlogHandler)
+	}
+	router.GET("/profile", controllers.ProfileHandler)
 }
 
 func welcomeHandler(c *gin.Context) {
