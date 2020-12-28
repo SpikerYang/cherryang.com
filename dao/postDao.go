@@ -11,3 +11,8 @@ func FindPosts() (p []models.Post, err error) {
 	result := db.Find(&posts)
 	return posts, result.Error
 }
+func FindPostById(id string) (p models.Post, err error) {
+	var post models.Post
+	result := db.Where("id= ?", id).First(&post)
+	return post, result.Error
+}

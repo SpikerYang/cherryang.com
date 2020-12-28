@@ -15,8 +15,22 @@ func EditBlogPage(c *gin.Context) {
 	c.HTML(http.StatusOK, "editBlog.html", gin.H{
 	})
 }
-func AddBlogHandler(c *gin.Context) {
 
+func FindBlogs(c *gin.Context) {
+	posts, err := dao.FindPosts()
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"data": posts})
+}
+func FindBlogById(c *gin.Context) {
+	post, err := dao.FindPostById(c.Param("id"))
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{"data": post})
 }
 func CreateBlog(c *gin.Context) {
 	var post models.Post
@@ -32,12 +46,4 @@ func CreateBlog(c *gin.Context) {
 		return
 	}
 	c.JSON(http.StatusOK, gin.H{})
-}
-func FindBlogs(c *gin.Context) {
-	posts, err := dao.FindPosts()
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		return
-	}
-	c.JSON(http.StatusOK, gin.H{"data": posts})
 }

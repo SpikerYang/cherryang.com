@@ -28,14 +28,16 @@ func setStaticFilePath(router *gin.Engine) {
 
 func registerHandler(router *gin.Engine) {
 	router.GET("/index", controllers.IndexPage)
+	router.GET("/view-blog", controllers.ViewBlogPage)
+	router.GET("/edit-blog", controllers.EditBlogPage)
+	router.GET("/profile", controllers.ProfilePage)
 	blogsRouteGroup := router.Group("/blogs")
 	{
-		blogsRouteGroup.GET("view", controllers.ViewBlogPage)
-		blogsRouteGroup.GET("edit", controllers.EditBlogPage)
+
 		blogsRouteGroup.GET("", controllers.FindBlogs)
+		blogsRouteGroup.GET(":id", controllers.FindBlogById)
 		blogsRouteGroup.POST("", controllers.CreateBlog)
 	}
-	router.GET("/profile", controllers.ProfilePage)
 }
 
 func initDataSource() {
