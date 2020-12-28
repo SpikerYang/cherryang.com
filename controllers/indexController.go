@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-func IndexHandler(c *gin.Context) {
+func IndexPage(c *gin.Context) {
 	c.HTML(http.StatusOK, "index.html", gin.H{
 	})
 }

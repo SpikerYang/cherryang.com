@@ -2,8 +2,8 @@ package main
 
 import (
 	"cherryang.com/controllers"
+	"cherryang.com/dao"
 	"github.com/gin-gonic/gin"
-	"net/http"
 )
 
 func main() {
@@ -11,6 +11,7 @@ func main() {
 	loadHtmlTemplates(router)
 	registerHandler(router)
 	setStaticFilePath(router)
+	initDataSource()
 	router.Run()
 }
 
@@ -26,17 +27,17 @@ func setStaticFilePath(router *gin.Engine) {
 }
 
 func registerHandler(router *gin.Engine) {
-	router.GET("/index", controllers.IndexHandler)
+	router.GET("/index", controllers.IndexPage)
 	blogsRouteGroup := router.Group("/blogs")
 	{
-		blogsRouteGroup.GET("add", controllers.AddBlogHandler)
-		blogsRouteGroup.GET("view", controllers.ViewBlogHandler)
-		blogsRouteGroup.GET("edit", controllers.EditBlogHandler)
+		blogsRouteGroup.GET("view", controllers.ViewBlogPage)
+		blogsRouteGroup.GET("edit", controllers.EditBlogPage)
+		blogsRouteGroup.GET("", controllers.FindBlogs)
+		blogsRouteGroup.POST("", controllers.CreateBlog)
 	}
-	router.GET("/profile", controllers.ProfileHandler)
+	router.GET("/profile", controllers.ProfilePage)
 }
 
-func welcomeHandler(c *gin.Context) {
-	c.HTML(http.StatusOK, "index.html", gin.H{
-	})
+func initDataSource() {
+	dao.InitDatabase("root:Yqr199733dlj*@tcp(localhost:3306)/blog?charset=utf8&parseTime=True&loc=Local")
 }

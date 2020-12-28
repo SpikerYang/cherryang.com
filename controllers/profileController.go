@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-func ProfileHandler(c *gin.Context) {
+func ProfilePage(c *gin.Context) {
 	c.HTML(http.StatusOK, "profile.html", gin.H{
 	})
 }
