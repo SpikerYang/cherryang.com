@@ -30,6 +30,7 @@ func registerHandler(router *gin.Engine) {
 	router.GET("/index", controllers.IndexPage)
 	router.GET("/view-blog", controllers.ViewBlogPage)
 	router.GET("/edit-blog", controllers.EditBlogPage)
+	router.GET("/add-blog", controllers.AddBlogPage)
 	router.GET("/profile", controllers.ProfilePage)
 	blogsRouteGroup := router.Group("/blogs")
 	{

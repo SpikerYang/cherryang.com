@@ -1,4 +1,5 @@
 .index-container {
+    min-width:850px;
     display: flex;
     vertical-align: center;
     flex-direction: column;

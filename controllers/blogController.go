@@ -15,7 +15,10 @@ func EditBlogPage(c *gin.Context) {
 	c.HTML(http.StatusOK, "editBlog.html", gin.H{
 	})
 }
-
+func AddBlogPage(c *gin.Context) {
+	c.HTML(http.StatusOK, "editBlog.html", gin.H{
+	})
+}
 func FindBlogs(c *gin.Context) {
 	posts, err := dao.FindPosts()
 	if err != nil {
